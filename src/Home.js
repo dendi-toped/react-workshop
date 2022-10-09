@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './Home.css';
 
+const DataFromApi = [
+  {name: 'Mirza', age: 22, job: 'WPE', alamat: 'Jakarta'},
+  {name: 'Apem', age: 22, job: 'PM', alamat: 'Jakarta'},
+  {name: 'Tika', age: 22, job: 'SE-EP', alamat: 'Jakarta'}
+]
+
 const MyComponent = (props) => {
-  const {name, alamat, panggilan, count} = props;
+  const {name, alamat, panggilan, count, job} = props;
   const nicknames = panggilan?.map(p => p).join(', ')
   return (
     <>
@@ -10,6 +16,7 @@ const MyComponent = (props) => {
       <p>I Live in: {alamat}</p>
       {nicknames && <p>Panggilan ku: {nicknames}</p>}
       {count && `Sekarang ${count}`}
+      <p>My Job: {job}</p>
     </>
   )
 }
@@ -17,22 +24,18 @@ const MyComponent = (props) => {
 const Home = () => {
   const [count, setCount] = useState(0)
 
-  const tambahClickHandler = () => {
-    setCount(prev => prev+1)
-  }
-
-  const kurangClickHandler = () => {
-    setCount(prev => prev-1)
-  }
   return (
     <div className="Home">
-      <MyComponent name="Mirza" alamat="Jakarta" panggilan={['mirza', 'za', 'chill']} count={count} />
-      <br/>
-      <button onClick={tambahClickHandler}>Tambah</button>
-      <br/>
-      <br/>
-      <button onClick={kurangClickHandler}>Kurang</button>
-      
+      {DataFromApi.map(datum => {
+        return (
+          <MyComponent 
+            name={datum.name} 
+            age={datum.age} 
+            alamat={datum.alamat} 
+            job={datum.job} 
+          />
+        )
+      })}
     </div>
   );
 }
