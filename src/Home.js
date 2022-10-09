@@ -1,14 +1,21 @@
 import React from 'react';
 import './Home.css';
 
-const MyComponent = () => {
-  return <h1>My Component</h1>
+const MyComponent = (props) => {
+  const {name, alamat} = props
+  return (
+    <>
+      <h1>My Name is: {name}</h1>
+      <p>I Live in: {alamat}</p>
+    </>
+  )
 }
 
 const Home = () => {
   return (
     <div className="Home">
-      <MyComponent/>
+      <MyComponent name="Mirza" alamat="Jakarta"/>
+      <MyComponent name="Dimas" alamat="Surabaya"/>
     </div>
   );
 }
