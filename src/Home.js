@@ -2,11 +2,13 @@ import React from 'react';
 import './Home.css';
 
 const MyComponent = (props) => {
-  const {name, alamat} = props
+  const {name, alamat, panggilan} = props;
+  const nicknames = panggilan?.map(p => p).join(', ')
   return (
     <>
       <h1>My Name is: {name}</h1>
       <p>I Live in: {alamat}</p>
+      <p>Panggilan ku: {nicknames}</p>
     </>
   )
 }
@@ -14,7 +16,7 @@ const MyComponent = (props) => {
 const Home = () => {
   return (
     <div className="Home">
-      <MyComponent name="Mirza" alamat="Jakarta"/>
+      <MyComponent name="Mirza" alamat="Jakarta" panggilan={['mirza', 'za', 'chill']} />
       <MyComponent name="Dimas" alamat="Surabaya"/>
     </div>
   );
