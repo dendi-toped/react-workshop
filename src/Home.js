@@ -8,7 +8,7 @@ const MyComponent = (props) => {
     <>
       <h1>My Name is: {name}</h1>
       <p>I Live in: {alamat}</p>
-      <p>Panggilan ku: {nicknames}</p>
+      {nicknames && <p>Panggilan ku: {nicknames}</p>}
     </>
   )
 }
